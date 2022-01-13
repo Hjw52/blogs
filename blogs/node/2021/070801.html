@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>深入浅出Node.js | Chuck&#39;s Blog</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link rel="icon" href="/blogs/favicon.ico">
+    <meta name="description" content="总要写点东西记录吧">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    
+    <link rel="preload" href="/blogs/assets/css/0.styles.46000bed.css" as="style"><link rel="preload" href="/blogs/assets/js/app.cb40e71a.js" as="script"><link rel="preload" href="/blogs/assets/js/4.9b4fbbfa.js" as="script"><link rel="preload" href="/blogs/assets/js/1.816ee287.js" as="script"><link rel="preload" href="/blogs/assets/js/21.0cebf56d.js" as="script"><link rel="prefetch" href="/blogs/assets/js/10.0f83a5e5.js"><link rel="prefetch" href="/blogs/assets/js/11.7a39697c.js"><link rel="prefetch" href="/blogs/assets/js/12.ab9d2642.js"><link rel="prefetch" href="/blogs/assets/js/13.30ec30d2.js"><link rel="prefetch" href="/blogs/assets/js/14.a82441b4.js"><link rel="prefetch" href="/blogs/assets/js/15.d4da47f3.js"><link rel="prefetch" href="/blogs/assets/js/16.7b406f66.js"><link rel="prefetch" href="/blogs/assets/js/17.2dab3107.js"><link rel="prefetch" href="/blogs/assets/js/18.3e446ca7.js"><link rel="prefetch" href="/blogs/assets/js/19.b97b5fff.js"><link rel="prefetch" href="/blogs/assets/js/2.06ddb29d.js"><link rel="prefetch" href="/blogs/assets/js/20.4ef640c6.js"><link rel="prefetch" href="/blogs/assets/js/22.c182a988.js"><link rel="prefetch" href="/blogs/assets/js/23.d0aeee6c.js"><link rel="prefetch" href="/blogs/assets/js/24.85877836.js"><link rel="prefetch" href="/blogs/assets/js/25.752f6807.js"><link rel="prefetch" href="/blogs/assets/js/26.50ddaf0d.js"><link rel="prefetch" href="/blogs/assets/js/27.2f3dca62.js"><link rel="prefetch" href="/blogs/assets/js/28.02662c80.js"><link rel="prefetch" href="/blogs/assets/js/29.d48ddfe3.js"><link rel="prefetch" href="/blogs/assets/js/5.d7767221.js"><link rel="prefetch" href="/blogs/assets/js/6.d8c29f1f.js"><link rel="prefetch" href="/blogs/assets/js/7.6b644db6.js"><link rel="prefetch" href="/blogs/assets/js/8.7ca1b1dd.js"><link rel="prefetch" href="/blogs/assets/js/9.ae0fe994.js">
+    <link rel="stylesheet" href="/blogs/assets/css/0.styles.46000bed.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar" data-v-edf8551e><div data-v-edf8551e><div id="loader-wrapper" class="loading-wrapper" data-v-d48f4d20 data-v-edf8551e data-v-edf8551e><div class="loader-main" data-v-d48f4d20><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div></div> <!----> <!----></div> <div class="password-shadow password-wrapper-out" style="display:none;" data-v-24de1186 data-v-edf8551e data-v-edf8551e><h3 class="title" data-v-24de1186 data-v-24de1186>Chuck's Blog</h3> <p class="description" data-v-24de1186 data-v-24de1186>总要写点东西记录吧</p> <label id="box" class="inputBox" data-v-24de1186 data-v-24de1186><input type="password" value="" data-v-24de1186> <span data-v-24de1186>Konck! Knock!</span> <button data-v-24de1186>OK</button></label> <div class="footer" data-v-24de1186 data-v-24de1186><span data-v-24de1186><i class="iconfont reco-theme" data-v-24de1186></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-24de1186>vuePress-theme-reco</a></span> <span data-v-24de1186><i class="iconfont reco-copyright" data-v-24de1186></i> <a data-v-24de1186><span data-v-24de1186>Chuck</span>
+            
+          <span data-v-24de1186>2021 - </span>
+          2022
+        </a></span></div></div> <div class="hide" data-v-edf8551e><header class="navbar" data-v-edf8551e><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/blogs/" class="home-link router-link-active"><img src="/blogs/favicon.ico" alt="Chuck's Blog" class="logo"> <span class="site-name">Chuck's Blog</span></a> <div class="links"><div class="color-picker"><a class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="mode-options"><h4 class="title">Choose mode</h4> <ul class="color-mode-options"><li class="dark">dark</li><li class="auto active">auto</li><li class="light">light</li></ul></div></div></div> <div class="search-box"><i class="iconfont reco-search"></i> <input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/blogs/" class="nav-link"><i class="iconfont reco-home"></i>
+  Home
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blogs/categories/CSS/" class="nav-link"><i class="undefined"></i>
+  CSS
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/categories/JavaScript/" class="nav-link"><i class="undefined"></i>
+  JavaScript
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/categories/Node/" class="nav-link"><i class="undefined"></i>
+  Node
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/categories/Vue/" class="nav-link"><i class="undefined"></i>
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/categories/浏览器相关/" class="nav-link"><i class="undefined"></i>
+  浏览器相关
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/categories/网络/" class="nav-link"><i class="undefined"></i>
+  网络
+</a></li></ul></div></div><div class="nav-item"><a href="/blogs/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div><div class="nav-item"><a href="/blogs/timeline/" class="nav-link"><i class="iconfont reco-date"></i>
+  归档
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-message"></i>
+      相关链接
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/Hjw52" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont reco-github"></i>
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://juejin.cn/user/1125491941583640/posts" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont reco-juejin"></i>
+  掘金
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask" data-v-edf8551e></div> <aside class="sidebar" data-v-edf8551e><div class="personal-info-wrapper" data-v-29bd5bbe data-v-edf8551e><img src="/blogs/avatar.jpg" alt="author-avatar" class="personal-img" data-v-29bd5bbe> <h3 class="name" data-v-29bd5bbe>
+    Chuck
+  </h3> <div class="num" data-v-29bd5bbe><div data-v-29bd5bbe><h3 data-v-29bd5bbe>18</h3> <h6 data-v-29bd5bbe>Articles</h6></div> <div data-v-29bd5bbe><h3 data-v-29bd5bbe>9</h3> <h6 data-v-29bd5bbe>Tags</h6></div></div> <ul class="social-links" data-v-29bd5bbe></ul> <hr data-v-29bd5bbe></div> <nav class="nav-links"><div class="nav-item"><a href="/blogs/" class="nav-link"><i class="iconfont reco-home"></i>
+  Home
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blogs/categories/CSS/" class="nav-link"><i class="undefined"></i>
+  CSS
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/categories/JavaScript/" class="nav-link"><i class="undefined"></i>
+  JavaScript
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/categories/Node/" class="nav-link"><i class="undefined"></i>
+  Node
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/categories/Vue/" class="nav-link"><i class="undefined"></i>
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/categories/浏览器相关/" class="nav-link"><i class="undefined"></i>
+  浏览器相关
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/categories/网络/" class="nav-link"><i class="undefined"></i>
+  网络
+</a></li></ul></div></div><div class="nav-item"><a href="/blogs/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div><div class="nav-item"><a href="/blogs/timeline/" class="nav-link"><i class="iconfont reco-date"></i>
+  归档
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-message"></i>
+      相关链接
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/Hjw52" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont reco-github"></i>
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://juejin.cn/user/1125491941583640/posts" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont reco-juejin"></i>
+  掘金
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav> <!----> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-24de1186 data-v-edf8551e><h3 class="title" data-v-24de1186 data-v-24de1186>深入浅出Node.js</h3> <!----> <label id="box" class="inputBox" data-v-24de1186 data-v-24de1186><input type="password" value="" data-v-24de1186> <span data-v-24de1186>Konck! Knock!</span> <button data-v-24de1186>OK</button></label> <div class="footer" data-v-24de1186 data-v-24de1186><span data-v-24de1186><i class="iconfont reco-theme" data-v-24de1186></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-24de1186>vuePress-theme-reco</a></span> <span data-v-24de1186><i class="iconfont reco-copyright" data-v-24de1186></i> <a data-v-24de1186><span data-v-24de1186>Chuck</span>
+            
+          <span data-v-24de1186>2021 - </span>
+          2022
+        </a></span></div></div> <div data-v-edf8551e><main class="page" style="padding-right:0;"><section><div class="page-title"><h1 class="title">深入浅出Node.js</h1> <div data-v-6b827e97><i class="iconfont reco-account" data-v-6b827e97><span data-v-6b827e97>Chuck</span></i> <i class="iconfont reco-date" data-v-6b827e97><span data-v-6b827e97>7/8/2021</span></i> <!----> <i class="tags iconfont reco-tag" data-v-6b827e97><span class="tag-item" data-v-6b827e97>Node</span></i></div></div> <div class="theme-reco-content content__default"><h2 id="_1-node简介"><a href="#_1-node简介" class="header-anchor">#</a> 1.Node简介</h2> <ul><li><p><strong>node特点</strong></p> <p>首先，Node并不是一门语言，而是一种JavaScript的运行环境，使JavaScript脱离浏览器的局限，在服务端也有一定的影响力。Node构成与Chrome类似，除了没有WebKit 和HTML等支持。node基于事件驱动来服务，它可以连接数据库，搭建websocket服务端，玩转多进程等。</p></li></ul> <p><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/1e2fd373208944ca9e9cb10ffa37414a~tplv-k3u1fbpfcp-watermark.image" alt="image-20200928202424042.png"></p> <p>它的特点：</p> <ol><li><strong>异步I/O：每次调用无须等待之前的I/O调用结束。</strong></li></ol> <p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/4259c3699c8d405dae8eee773e4570b0~tplv-k3u1fbpfcp-watermark.image" alt="image-20200928203019494.png"></p> <div class="language- extra-class"><pre><code> 这样多次调用的耗时取决于最慢的那个任务耗时。
+</code></pre></div><ol start="2"><li><p><strong>事件与回调：造成代码的编写顺序与执行顺序无关。</strong></p></li> <li><p><strong>单线程</strong>：JavaScript执行在单线程，无法与其他线程共享状态，无须关注状态的同步问题，但也存在无法利用多核CPU的特点。（但node可利用子进程分担计算任务）</p></li> <li><p><strong>跨平台</strong>：通过libuv解决平台差异</p></li></ol> <p><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/bc0367256e4f4b869606d030c500d82f~tplv-k3u1fbpfcp-watermark.image" alt="image-20200928203757602.png"></p> <ul><li><p><strong>node应用场景</strong></p></li> <li><p>[ ]   1. I/O密集型</p></li> <li><p>[ ]   2. 分布式应用</p></li> <li><p>[ ]   3. 实时应用</p></li></ul> <h2 id="_2-模块机制"><a href="#_2-模块机制" class="header-anchor">#</a> 2.模块机制</h2> <p><strong>模块实现</strong></p> <ol><li>优先缓存加载</li> <li>路径分析与文件定位</li> <li>模块编译（不同的拓展名不同的载入方法）</li></ol> <p>在Node中模块分两类：一类Node提供的核心模块，部分核心模块在进程启动时就加载进内存，省略了文件定位和编译，并在路径分析中优先执行；一类用户编写的文件模块，需要进过上面3个步骤，速度较慢。</p> <p><strong>文件载入</strong></p> <ol><li>.js文件 通过fs模块同步读取文件后编译执行。</li> <li>.node文件 通过dlopen()方法加载。</li> <li>.json文件  通过fs模块同步读取文件后编译执行，JSON.parse()解析返回。</li> <li>其他拓展名，按js文件处理。</li></ol> <h4 id="核心模块引入-从调javascript到底层c"><a href="#核心模块引入-从调javascript到底层c" class="header-anchor">#</a> 核心模块引入：从调JavaScript到底层C++</h4> <p><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b952e52a0e9447e19d940d5a76bf02a7~tplv-k3u1fbpfcp-watermark.image" alt="image-20200928205820820.png"></p> <h2 id="_3-异步i-o"><a href="#_3-异步i-o" class="header-anchor">#</a> 3.异步I/O</h2> <ul><li><p><strong>为什么要异步I/O？</strong></p> <ol><li>I/O的时间是昂贵的</li> <li>让单线程远离多线程死锁，上下文切换；同时不阻塞I/O。</li></ol></li> <li><p><strong>异步I/O的现状</strong></p></li></ul> <p>操作系统内核对于I/O只有阻塞和非阻塞。这和异步/同步实际上是两回事，即使听起来似乎相同。</p> <p><strong>阻塞I/O：</strong> 阻塞I/O的一个特点就是调用之后要等到系统内核完成所以操作，调用才结束。这造成了CPU等待I/O，浪费等待时间。</p> <p><strong>非阻塞I/O：</strong> 非阻塞I/O则是调用后立即返回，但返回的只是调用的状态，为了获取回调结果 ，应用程序需要重复调用I/O确认是否完成，称之为轮询。它让CPU处理状态判断，造成CPU资源的浪费。</p> <p>现有轮询技术：</p> <h4 id="_1-read-最原始-性能最低的方法-重复调用检查i-o状态来获取完整数据的读取。"><a href="#_1-read-最原始-性能最低的方法-重复调用检查i-o状态来获取完整数据的读取。" class="header-anchor">#</a> 1. read：最原始 性能最低的方法，重复调用检查I/O状态来获取完整数据的读取。</h4> <p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/0dd8b849d75242da9e84cc263a1377bd~tplv-k3u1fbpfcp-watermark.image" alt="image-20200921133917566.png"></p> <h4 id="_2-select-在read的基础上改进-通过对文件描述符的事件状态来判断-由于它采用1024长度的数组来存储状态-所以它最多可同时检查1024个文件描述符。"><a href="#_2-select-在read的基础上改进-通过对文件描述符的事件状态来判断-由于它采用1024长度的数组来存储状态-所以它最多可同时检查1024个文件描述符。" class="header-anchor">#</a> 2. select：在read的基础上改进，通过对文件描述符的事件状态来判断，由于它采用1024长度的数组来存储状态，所以它最多可同时检查1024个文件描述符。</h4> <p><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/6f199ec9455843f0aa31508fa3768c6d~tplv-k3u1fbpfcp-watermark.image" alt="image-20200921134049320.png"></p> <h4 id="_3-poll-它采用链表避免数组长度的限制-其次它能避免不需要的检查-但当文件描述符较多时-性能较低。"><a href="#_3-poll-它采用链表避免数组长度的限制-其次它能避免不需要的检查-但当文件描述符较多时-性能较低。" class="header-anchor">#</a> 3. poll：它采用链表避免数组长度的限制，其次它能避免不需要的检查，但当文件描述符较多时，性能较低。</h4> <p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/da617310517b436885084f9336fa1dab~tplv-k3u1fbpfcp-watermark.image" alt="image-20200921134415647.png"></p> <h4 id="_4-epoll-该方案是linux下效率最高的事件通知机制-在轮询时如果没有检查到i-o事件-将会进行休眠-直到事件将它唤醒-它真实利用事件通知-执行回调-不是遍历查询-不会浪费cpu-执行效率较高。"><a href="#_4-epoll-该方案是linux下效率最高的事件通知机制-在轮询时如果没有检查到i-o事件-将会进行休眠-直到事件将它唤醒-它真实利用事件通知-执行回调-不是遍历查询-不会浪费cpu-执行效率较高。" class="header-anchor">#</a> 4. epoll：该方案是Linux下效率最高的事件通知机制，在轮询时如果没有检查到I/O事件，将会进行休眠，直到事件将它唤醒，它真实利用事件通知，执行回调 不是遍历查询 不会浪费CPU，执行效率较高。</h4> <p><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/ae3b2b2af07a48879ad4f9b662f5996c~tplv-k3u1fbpfcp-watermark.image" alt="image-20200921134750888.png"></p> <h4 id="_5-kqueue-该方案实现与epoll类似-不过是在freebsd系统下实现。"><a href="#_5-kqueue-该方案实现与epoll类似-不过是在freebsd系统下实现。" class="header-anchor">#</a> 5. kqueue：该方案实现与epoll类似，不过是在FreeBSD系统下实现。</h4> <p>轮询技术解决了非阻塞I/O获取数据的需求，但对于程序，它仍然是同步，因为它需要等待I/O完全返回，等待期间，CPU要么遍历文件描述符，要么用于休眠等待事件发生。而我们理想的异步是在CPU等待期间也能够处理下一个任务，I/O完成后通过信号或回调将数据传给应用程序。</p> <p><strong>理想中的异步I/O：</strong></p> <p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/47d5ed6406584e958377fcd133c0261a~tplv-k3u1fbpfcp-watermark.image" alt="image-20200921135127431.png"></p> <p>Linux存在一方式（AIO）就是通过信号或回调传递数据的，不过AIO仅支持内核I/O的0_DIRECT方式读取，无法读取系统缓存。</p> <p><strong>现实中的异步I/O：</strong></p> <p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a763be5481fa4079995ccd156db880b2~tplv-k3u1fbpfcp-watermark.image" alt="image-20200921140146405.png"></p> <p>采用线程池，通过线程之间的通信将I/O得到的数据进行传递，模拟实现异步。</p> <p><strong>Node的异步I/O：</strong> 事件循环，观察者，请求对象，I/O线程池</p> <p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b16b4871017149e2a2440e2a779c5345~tplv-k3u1fbpfcp-watermark.image" alt="image-20200921143304773.png"></p> <p>事件循环</p> <p>观察者：判断是否有事件需要处理的过程就是向观察者轮询。</p> <p>请求对象：从JavaScript发起调用内核到执行完I/O操作的过程，这中间产物叫请求对象。</p> <h4 id="异步api"><a href="#异步api" class="header-anchor">#</a> 异步API</h4> <ol><li><strong>定时器（非精准）</strong> <img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/1ab047857b6b4ff1950b6731cf5eec75~tplv-k3u1fbpfcp-watermark.image" alt="image-20200922084641077.png"></li></ol> <p>调用setTimeout，setInterval 创建的定时器插入定时器观察者内部的红黑树。每次循环从该红黑树迭代取出定时器对象，检查是否超过定时，如果超过就形成事件，立即执行回调。两个的区别在于setInterval 是重复地检测。</p> <p>2.<strong>process.nextTick()</strong></p> <p>为了立即执行异步任务，调用next Tick将回调放入队列，下一轮Tick中取出执行。时间复杂度为O(1),而定时器采用红黑树，时间复杂度为O（lg n)，相比下process.nextTick更轻量高效。</p> <p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/934f21702df44bc7ac5f998264da8384~tplv-k3u1fbpfcp-watermark.image" alt="image-20200922090133410.png"></p> <p>3.<strong>setImmediate()</strong></p> <p>setImmediate与process.nextTick类似，都是延迟执行，但nextTick回调函数保存至数组，setImmediate则保存在链表，nextTick优先级高于setImmediate。这是由于事件循环观察者检查有先后，process.nextTick属于idle观察者，setImmediate属于check观察者。优先级：idle观察者&gt;I/O观察者&gt;check观察者。</p> <p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/663ff2ad3f8249658ed371281d8577ae~tplv-k3u1fbpfcp-watermark.image" alt="image-20200922091110606.png"></p> <h2 id="_4-异步编程"><a href="#_4-异步编程" class="header-anchor">#</a> 4.异步编程</h2> <ul><li>异步编程解决方案
+<ol><li><p>事件发布/订阅模式</p></li> <li><p>Promise/Deferred模式：Deferred主要用于内部，维护异步模型的状态，Promise作用于外部，通过then()方法暴露给外部添加自定义逻辑。</p></li></ol></li></ul> <p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/701b56a9d6a94a5e9f5f8879d4d78c3d~tplv-k3u1fbpfcp-watermark.image" alt="image-20200928214203999.png"></p> <div class="language- extra-class"><pre><code> ```
+ // Deferred实现
+ var Deferred = function () {
+  this.state = 'unfulfilled';
+  this.promise = new Promise();
+ };
+ Deferred.prototype.resolve = function (obj) {
+  this.state = 'fulfilled';
+  this.promise.emit('success', obj);
+ };
+ Deferred.prototype.reject = function (err) {
+  this.state = 'failed';
+  this.promise.emit('error', err);
+ };
+ Deferred.prototype.progress = function (data) {
+  this.promise.emit('progress', data);
+ }; 
+ 
+ // Promise实现
+ var Promise = function () {
+  EventEmitter.call(this);
+ };
+ util.inherits(Promise, EventEmitter);
+ Promise.prototype.then = function (fulfilledHandler, errorHandler, progressHandler) {
+  if (typeof fulfilledHandler === 'function') {
+  // 利用once()方法保证成功回调只执行一次
+  this.once('success', fulfilledHandler);
+  }
+  if (typeof errorHandler === 'function') {
+  //利用once()方法保证成功回调只执行一次
+  this.once('error', errorHandler);
+  }
+  if (typeof progressHandler === 'function') {
+  this.on('progress', progressHandler);
+  }
+  return this;
+ }; 
+ ```
+
+ Promise.all
+
+ ```
+ Deferred.prototype.all = function (promises) { 
+ var count = promises.length;
+  var that = this;
+  var results = [];
+  promises.forEach(function (promise, i) {
+  promise.then(function (data) {
+  count--;
+  results[i] = data;
+  if (count === 0) {
+  that.resolve(results);
+  }
+  }, function (err) {
+  that.reject(err);
+  });
+  });
+  return this.promise;
+ }; 
+ ```
+</code></pre></div><ol start="3"><li>流程控制库：Step ，wind</li></ol> <ul><li>异步并发控制</li></ul> <ol><li>async
+<ul><li>async.parallel 无相关依赖</li> <li>async.waterfall 存在前后依赖</li> <li>async.auto 自动检查依赖</li></ul></li></ol> <h2 id="_5-内存控制"><a href="#_5-内存控制" class="header-anchor">#</a> 5.内存控制</h2> <ul><li>V8垃圾回收与内存限制</li> <li>如何使用好内存</li></ul> <ol><li><p><strong>垃圾回收算法</strong></p> <p>Mark-Sweep &amp; Mark-Compact</p></li></ol> <p><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/fd6580dfeebb45b584bb3be483cd6749~tplv-k3u1fbpfcp-watermark.image" alt="image-20200928215651219.png"></p> <p><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/3337d42a7c9648a58cb6b733a8fe9bca~tplv-k3u1fbpfcp-watermark.image" alt="image-20200928215735206.png"></p> <ul><li>Scavenge</li></ul> <p><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/3ebd40ea593e486faded2bf538c4eb13~tplv-k3u1fbpfcp-watermark.image" alt="image-20200928220014481.png"></p> <p><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/37a741262fa14b3ba8efedd5c1419fbd~tplv-k3u1fbpfcp-watermark.image" alt="image-20200923135728747.png"></p> <ul><li>buffer对象不经V8内存分配机制，不会有堆内存大小限制。</li></ul> <h2 id="_6-buffer"><a href="#_6-buffer" class="header-anchor">#</a> 6.Buffer</h2> <ul><li><p>buffer的结构</p></li> <li><p>buffer的转换，宽字节编码容易形成乱码</p></li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>var fs = require('fs');
+var rs = fs.createReadStream('test.md');
+var data = '';
+rs.on(&quot;data&quot;, function (chunk){
+ data += chunk;
+});
+rs.on(&quot;end&quot;, function () {
+ console.log(data);
+});
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><p>这段代码用于流读取规范，chunk即buffer对象。这段代码对于英文可能没问题，但遇到宽字节编码就会产生乱码。问题在于</p> <div class="language- line-numbers-mode"><pre class="language-text"><code> data += chunk;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>这句话相当于toString操作，等价于：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>data = data.toString() + chunk.toString(); 
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>当我们读取中文静夜思来测试时，有可能产生</p> <p><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/fd4a0aa408d94481ad0ea8f8fcbe27d3~tplv-k3u1fbpfcp-watermark.image" alt="image-20200924140621994.png"></p> <p>原因：</p> <p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/bcd003aa8fa94e0db5c65520ddb634b8~tplv-k3u1fbpfcp-watermark.image" alt="image-20200924140716694.png"></p> <p>通过setEncoding()，ཨstring_decoder模块可以解决表面上的问题 ，但不改变实质。正确的拼接方式应该是用数组存储buffer，由小合并成大buffer。</p> <ul><li>读取相同一个大文件，hightWaterMark（每次读取限定值）越大，读取速度越快。</li></ul> <h2 id="_7-网络编程"><a href="#_7-网络编程" class="header-anchor">#</a> 7.网络编程</h2> <ul><li><p>TCP与UDP</p></li> <li><p>HTTP与HTTPS</p></li> <li><p>webcocket</p></li></ul> <p><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/146a8aaf40aa47f7944b4fb916260842~tplv-k3u1fbpfcp-watermark.image" alt="image-20200925135725261.png"></p> <h2 id="_8-构建web应用"><a href="#_8-构建web应用" class="header-anchor">#</a> 8.构建web应用</h2> <ul><li>数据上传</li> <li>路由解析</li> <li>中间件</li> <li>页面渲染</li></ul> <h2 id="_9-进程"><a href="#_9-进程" class="header-anchor">#</a> 9.进程</h2> <p>严格意义上讲，Node并非真正单线程架构。它自身还有一定的I/O线程存在，由底层libuv处理。单线程是指：<strong>JavaScript代码永远运行在V8上，所以称单线程</strong>。</p> <ul><li><strong>子进程</strong></li></ul> <p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/29bd6ec41a65418ba4344161a1b8e1e3~tplv-k3u1fbpfcp-watermark.image" alt="image-20200927134718811.png"></p> <p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/8adca380718a42aebbd19bca73e5a0db~tplv-k3u1fbpfcp-watermark.image" alt="image-20200927134921824.png"></p> <p>补充：JavaScript文件通过execFile 必须在首行添加，才能成为可直接执行文件。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>#!/usr/bin/env node
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><ul><li><strong>进程间通信</strong></li></ul> <p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/7f62abdd3e1b4f82a27ecba6c894781d~tplv-k3u1fbpfcp-watermark.image" alt="image-20200927135920039.png"></p> <p>补充：只有子进程为node进程时，才会根据环境变量去连接IPC通道。其他类型无法实现进程间通信。</p> <ul><li>句柄传递</li></ul> <p><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/5533a434345146e8a13e942ef55e55dd~tplv-k3u1fbpfcp-watermark.image" alt="image-20200928085804898.png"></p> <p><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/26541bef1cc0459993a527bcae642944~tplv-k3u1fbpfcp-watermark.image" alt="image-20200928085825502.png"></p></div></section> <footer class="page-edit"><!----> <!----></footer> <!----> <div class="comments-wrapper"><!----></div> <ul class="side-bar sub-sidebar-wrapper" style="width:0;" data-v-1ab38110></ul></main> <!----></div></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-c6073ba8 data-v-c6073ba8><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-c6073ba8><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-c6073ba8></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-c6073ba8></path></svg></div></div></div>
+    <script src="/blogs/assets/js/app.cb40e71a.js" defer></script><script src="/blogs/assets/js/4.9b4fbbfa.js" defer></script><script src="/blogs/assets/js/1.816ee287.js" defer></script><script src="/blogs/assets/js/21.0cebf56d.js" defer></script>
+  </body>
+</html>

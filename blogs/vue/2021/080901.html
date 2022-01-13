@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Vue3源码系列（一）：初探Vue3 | Chuck&#39;s Blog</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link rel="icon" href="/blogs/favicon.ico">
+    <meta name="description" content="总要写点东西记录吧">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    
+    <link rel="preload" href="/blogs/assets/css/0.styles.46000bed.css" as="style"><link rel="preload" href="/blogs/assets/js/app.cb40e71a.js" as="script"><link rel="preload" href="/blogs/assets/js/4.9b4fbbfa.js" as="script"><link rel="preload" href="/blogs/assets/js/1.816ee287.js" as="script"><link rel="preload" href="/blogs/assets/js/23.d0aeee6c.js" as="script"><link rel="prefetch" href="/blogs/assets/js/10.0f83a5e5.js"><link rel="prefetch" href="/blogs/assets/js/11.7a39697c.js"><link rel="prefetch" href="/blogs/assets/js/12.ab9d2642.js"><link rel="prefetch" href="/blogs/assets/js/13.30ec30d2.js"><link rel="prefetch" href="/blogs/assets/js/14.a82441b4.js"><link rel="prefetch" href="/blogs/assets/js/15.d4da47f3.js"><link rel="prefetch" href="/blogs/assets/js/16.7b406f66.js"><link rel="prefetch" href="/blogs/assets/js/17.2dab3107.js"><link rel="prefetch" href="/blogs/assets/js/18.3e446ca7.js"><link rel="prefetch" href="/blogs/assets/js/19.b97b5fff.js"><link rel="prefetch" href="/blogs/assets/js/2.06ddb29d.js"><link rel="prefetch" href="/blogs/assets/js/20.4ef640c6.js"><link rel="prefetch" href="/blogs/assets/js/21.0cebf56d.js"><link rel="prefetch" href="/blogs/assets/js/22.c182a988.js"><link rel="prefetch" href="/blogs/assets/js/24.85877836.js"><link rel="prefetch" href="/blogs/assets/js/25.752f6807.js"><link rel="prefetch" href="/blogs/assets/js/26.50ddaf0d.js"><link rel="prefetch" href="/blogs/assets/js/27.2f3dca62.js"><link rel="prefetch" href="/blogs/assets/js/28.02662c80.js"><link rel="prefetch" href="/blogs/assets/js/29.d48ddfe3.js"><link rel="prefetch" href="/blogs/assets/js/5.d7767221.js"><link rel="prefetch" href="/blogs/assets/js/6.d8c29f1f.js"><link rel="prefetch" href="/blogs/assets/js/7.6b644db6.js"><link rel="prefetch" href="/blogs/assets/js/8.7ca1b1dd.js"><link rel="prefetch" href="/blogs/assets/js/9.ae0fe994.js">
+    <link rel="stylesheet" href="/blogs/assets/css/0.styles.46000bed.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar" data-v-edf8551e><div data-v-edf8551e><div id="loader-wrapper" class="loading-wrapper" data-v-d48f4d20 data-v-edf8551e data-v-edf8551e><div class="loader-main" data-v-d48f4d20><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div></div> <!----> <!----></div> <div class="password-shadow password-wrapper-out" style="display:none;" data-v-24de1186 data-v-edf8551e data-v-edf8551e><h3 class="title" data-v-24de1186 data-v-24de1186>Chuck's Blog</h3> <p class="description" data-v-24de1186 data-v-24de1186>总要写点东西记录吧</p> <label id="box" class="inputBox" data-v-24de1186 data-v-24de1186><input type="password" value="" data-v-24de1186> <span data-v-24de1186>Konck! Knock!</span> <button data-v-24de1186>OK</button></label> <div class="footer" data-v-24de1186 data-v-24de1186><span data-v-24de1186><i class="iconfont reco-theme" data-v-24de1186></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-24de1186>vuePress-theme-reco</a></span> <span data-v-24de1186><i class="iconfont reco-copyright" data-v-24de1186></i> <a data-v-24de1186><span data-v-24de1186>Chuck</span>
+            
+          <span data-v-24de1186>2021 - </span>
+          2022
+        </a></span></div></div> <div class="hide" data-v-edf8551e><header class="navbar" data-v-edf8551e><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/blogs/" class="home-link router-link-active"><img src="/blogs/favicon.ico" alt="Chuck's Blog" class="logo"> <span class="site-name">Chuck's Blog</span></a> <div class="links"><div class="color-picker"><a class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="mode-options"><h4 class="title">Choose mode</h4> <ul class="color-mode-options"><li class="dark">dark</li><li class="auto active">auto</li><li class="light">light</li></ul></div></div></div> <div class="search-box"><i class="iconfont reco-search"></i> <input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/blogs/" class="nav-link"><i class="iconfont reco-home"></i>
+  Home
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blogs/categories/CSS/" class="nav-link"><i class="undefined"></i>
+  CSS
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/categories/JavaScript/" class="nav-link"><i class="undefined"></i>
+  JavaScript
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/categories/Node/" class="nav-link"><i class="undefined"></i>
+  Node
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/categories/Vue/" class="nav-link"><i class="undefined"></i>
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/categories/浏览器相关/" class="nav-link"><i class="undefined"></i>
+  浏览器相关
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/categories/网络/" class="nav-link"><i class="undefined"></i>
+  网络
+</a></li></ul></div></div><div class="nav-item"><a href="/blogs/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div><div class="nav-item"><a href="/blogs/timeline/" class="nav-link"><i class="iconfont reco-date"></i>
+  归档
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-message"></i>
+      相关链接
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/Hjw52" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont reco-github"></i>
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://juejin.cn/user/1125491941583640/posts" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont reco-juejin"></i>
+  掘金
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask" data-v-edf8551e></div> <aside class="sidebar" data-v-edf8551e><div class="personal-info-wrapper" data-v-29bd5bbe data-v-edf8551e><img src="/blogs/avatar.jpg" alt="author-avatar" class="personal-img" data-v-29bd5bbe> <h3 class="name" data-v-29bd5bbe>
+    Chuck
+  </h3> <div class="num" data-v-29bd5bbe><div data-v-29bd5bbe><h3 data-v-29bd5bbe>18</h3> <h6 data-v-29bd5bbe>Articles</h6></div> <div data-v-29bd5bbe><h3 data-v-29bd5bbe>9</h3> <h6 data-v-29bd5bbe>Tags</h6></div></div> <ul class="social-links" data-v-29bd5bbe></ul> <hr data-v-29bd5bbe></div> <nav class="nav-links"><div class="nav-item"><a href="/blogs/" class="nav-link"><i class="iconfont reco-home"></i>
+  Home
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blogs/categories/CSS/" class="nav-link"><i class="undefined"></i>
+  CSS
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/categories/JavaScript/" class="nav-link"><i class="undefined"></i>
+  JavaScript
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/categories/Node/" class="nav-link"><i class="undefined"></i>
+  Node
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/categories/Vue/" class="nav-link"><i class="undefined"></i>
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/categories/浏览器相关/" class="nav-link"><i class="undefined"></i>
+  浏览器相关
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/categories/网络/" class="nav-link"><i class="undefined"></i>
+  网络
+</a></li></ul></div></div><div class="nav-item"><a href="/blogs/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div><div class="nav-item"><a href="/blogs/timeline/" class="nav-link"><i class="iconfont reco-date"></i>
+  归档
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-message"></i>
+      相关链接
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/Hjw52" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont reco-github"></i>
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://juejin.cn/user/1125491941583640/posts" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont reco-juejin"></i>
+  掘金
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav> <!----> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-24de1186 data-v-edf8551e><h3 class="title" data-v-24de1186 data-v-24de1186>Vue3源码系列（一）：初探Vue3</h3> <!----> <label id="box" class="inputBox" data-v-24de1186 data-v-24de1186><input type="password" value="" data-v-24de1186> <span data-v-24de1186>Konck! Knock!</span> <button data-v-24de1186>OK</button></label> <div class="footer" data-v-24de1186 data-v-24de1186><span data-v-24de1186><i class="iconfont reco-theme" data-v-24de1186></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-24de1186>vuePress-theme-reco</a></span> <span data-v-24de1186><i class="iconfont reco-copyright" data-v-24de1186></i> <a data-v-24de1186><span data-v-24de1186>Chuck</span>
+            
+          <span data-v-24de1186>2021 - </span>
+          2022
+        </a></span></div></div> <div data-v-edf8551e><main class="page" style="padding-right:0;"><section><div class="page-title"><h1 class="title">Vue3源码系列（一）：初探Vue3</h1> <div data-v-6b827e97><i class="iconfont reco-account" data-v-6b827e97><span data-v-6b827e97>Chuck</span></i> <i class="iconfont reco-date" data-v-6b827e97><span data-v-6b827e97>8/9/2021</span></i> <!----> <i class="tags iconfont reco-tag" data-v-6b827e97><span class="tag-item" data-v-6b827e97>Vue3</span></i></div></div> <div class="theme-reco-content content__default"><h3 id="vue3新特性"><a href="#vue3新特性" class="header-anchor">#</a> Vue3新特性</h3> <ol><li><p><strong>composition API。</strong></p> <p>不同于Vue2的选项式API，组合式API将组件初始化时使用setup方法，包含所有数据、方法，并统一返回。</p> <p>举个例子：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>Vue3 composition API：
+
+&lt;script&gt;
+export default{
+	setup（）{
+		const count =ref (0);
+        const add=()=&gt;{
+        	count.value++;
+        }
+		return {
+			count,
+			add
+		}
+	}
+}
+&lt;/script&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br></div></div></li> <li><p><strong>基于Proxy的响应式。</strong></p> <p>Vue2中响应式数据是通过ES5的数据劫持setter/getter 来实现的，使用的是object.defineproperty，但只能对现有的对象属性进行劫持，针对的是对象上的属性，尽管做一些重写也不能完全覆盖数据变更的地方（比如动态向对象上添加Key，或通过下标的方式修改数组。）</p> <p>在Vue3中响应式数据使用的是Proxy，针对的是整个对象，直接代理对象，修改代理对象时拦截数据的变化。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>const data={}
+
+const dataProxy=new Proxy(data,{
+	set(target,key,val){
+	//代理对象
+		Reflact.set()
+	}
+	get(target,key,val){
+		//
+		Reflact.get()
+	}
+})
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div><p>Proxy.revocable()方法可以用来创建一个可撤销的代理对象。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>const target = { name: 'vuejs'}
+const {proxy, revoke} = Proxy.revocable(target, handler)
+proxy.name // 正常取值输出 vuejs
+revoke() // 取值完成对proxy进行封闭，撤消代理
+proxy.name // TypeError: Revoked
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><p>但Proxy只有在ES6的环境使用，还无法编译降级。</p></li> <li><p><strong>Tree-shaking的优化。</strong></p> <p>在使用Vue3时可以选择按需选择引入相应的模块，而不是一次性引入所有代码，这样打包时Vue3可以将没有引用的源码移除，从而减少体积。</p></li> <li><p><strong>渲染性能的优化。</strong></p> <p>Vue3将静态节点、子树等渲染代码移到渲染函数之外，这样可以避免每次渲染时重新创建这些不会变化的对象。将元素的更新类型进行细分，例如动态绑定的部分如果只涉及到 class，则在对比时只需要对比 class 即可，不需要对比它的内容。此外，Vue3还有不少变化，比如模板中支持了多根节点的组件等，这边就不一一介绍。</p></li></ol> <h3 id="代码结构"><a href="#代码结构" class="header-anchor">#</a> 代码结构</h3> <p>Vue3的代码主要分packages和scripts两个目录，script主要用于代码检查、打包等工程操作，真正的源码位于packages目录下，一共有13个包：</p> <ul><li><code>compiler-core</code> 模板解析核心，与具体环境无关，主要生成 AST，并根据 AST 生成 <code>render()</code> 方法</li> <li><code>compiler-dom</code> 浏览器环境中的模板解析逻辑，如处理 HTML 转义、处理 v-model 等指令</li> <li><code>compiler-sfc</code> 负责解析 Vue 单文件组件，在前面 vue-loader 的解析中有讲解过</li> <li><code>compiler-ssr</code> 服务端渲染环境中的模板解析逻辑</li> <li><code>reactivity</code> 响应式数据相关逻辑</li> <li><code>runtime-core</code> 与平台无关的运行时核心，包括 render</li> <li><code>runtime-dom</code> 浏览器环境中的运行时核心</li> <li><code>runtime-test</code> 用于自动化测试的相关配套</li> <li><code>server-renderer</code> 用于 SSR 服务端渲染的逻辑</li> <li><code>shared</code> 一些各个包之间共享的公共工具</li> <li><code>size-check</code> 一个用于测试 tree shaking 后代码大小的示例库</li> <li><code>template-explorer</code> 用于检查模板编译后的输出，主要用于开发调试</li> <li><code>vue</code> Vue 3 的主要入口，包括运行时和编译器，包括几个不同的入口（开发版本、runtime 版本、full 版本）</li></ul> <h3 id="reactivity"><a href="#reactivity" class="header-anchor">#</a> reactivity</h3> <p>整体流程</p> <p><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/87a4702e63fa4932929c86ec5e42ea1d~tplv-k3u1fbpfcp-watermark.image" alt="1.png"></p> <h4 id="reactiveflags"><a href="#reactiveflags" class="header-anchor">#</a> ReactiveFlags</h4> <div class="language- line-numbers-mode"><pre class="language-text"><code>export const enum ReactiveFlags {
+  skip = '__v_skip',
+  isReactive = '__v_isReactive',
+  isReadonly = '__v_isReadonly',
+  raw = '__v_raw',
+  reactive = '__v_reactive',
+  readonly = '__v_readonly'
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><ul><li>代理对象会通过 <code>ReactiveFlags.raw</code> 引用原始对象</li> <li>原始对象会通过 <code>ReactiveFlags.reactive</code> 或 <code>ReactiveFlags.readonly</code> 引用代理对象</li> <li>代理对象根据它是 <code>reactive</code> 或 <code>readonly</code> 的， 将 <code>ReactiveFlags.isReactive</code> 或 <code>ReactiveFlags.isReadonly</code> 属性值设置为 <code>true</code></li></ul> <h4 id="track与trigger"><a href="#track与trigger" class="header-anchor">#</a> Track与Trigger</h4> <p><code>track()</code> 和 <code>trigger()</code> 是依赖收集的核心，<code>track()</code> 用来跟踪收集依赖(收集 <code>effect</code>)，<code>trigger()</code> 用来触发响应(执行 <code>effect</code>)，它们需要配合 <code>effect()</code> 函数使用</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>const obj = { foo: 1 }
+effect(() =&gt; {
+  console.log(obj.foo)
+  track(obj, TrackOpTypes.GET, 'foo')
+})
+
+obj.foo = 2
+trigger(obj, TriggerOpTypes.SET, 'foo')
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><p>track与trigger函数接受三个参数：</p> <ul><li>target：要跟踪的目标对象，这里就是 <code>obj</code></li> <li>跟踪操作的类型：<code>obj.foo</code> 是读取对象的值，因此是 <code>'get'</code></li> <li>key：要跟踪目标对象的 <code>key</code>，我们读取的是 <code>foo</code>，因此 <code>key</code> 是 <code>foo</code></li></ul> <p>本质上建立一种数据结构：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>// 伪代码
+map : {
+    [target]: {
+        [key]: [effect1, effect2....]
+    }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><p>简单的理解，<code>effect</code> 与对象和具体操作的 <code>key</code>，是以这种映射关系建立关联的：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>[target]`----&gt;`key1`----&gt;`[effect1, effect2...]
+[target]`----&gt;`key2`----&gt;`[effect1, effect3...]
+[target2]`----&gt;`key1`----&gt;`[effect5, effect6...]
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>既然 <code>effect</code> 与目标对象 <code>target</code> 已经建立了联系，那么当然就可以想办法通过 <code>target</code> ----&gt; <code>key</code> 进而取到 <code>effect</code> ，然后执行它们，而这就是 <code>trigger()</code> 函数做的事情，所以在调用 <code>trigger</code> 函数时我们要指定目标对象和相应的<code>key</code>值。</p> <h4 id="toref"><a href="#toref" class="header-anchor">#</a> toRef</h4> <p>使用reactive 声明响应式对象有时出现对象的二次引用，造成响应丢失（对象解构返回渲染环境也会丢失响应）。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>const obj = reactive({ foo: 1 }) // obj 是响应式数据
+const obj2 = { foo: obj.foo }
+
+effect(() =&gt; {
+  console.log(obj2.foo) // 这里读取 obj2.foo
+})
+
+obj.foo = 2  // 设置 obj.foo 显然无效
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><p>解决问题可以使用<code>toRef()</code> 函数把响应式对象的某个Key值转换成ref。它的实现就直接set、get返回，因为target本身就是响应式的，所以无需track和trigger。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>function toRef(target, key) {
+    return {
+        isRef: true,
+        get value() {
+            return target[key]
+        },
+        set value(newVal){
+            target[key] = newVal
+        }
+    }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><p>但是ref的值需要.value访问值才行。如果不想要.value来取值，我们可以直接再包一层reactive。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>const obj = reactive({ foo: 1 })
+// const obj2 = { foo: toRef(obj, 'foo') }
+const obj2 = reactive({ ...toRefs(obj) })  // 让 obj2 也是 reactive
+
+effect(() =&gt; {
+  console.log(obj2.foo)  // 即使 obj2.foo 是 ref，我们也不需要 .value 来取值
+})
+
+obj.foo = 2 // 有效
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><p>它的实现，发现值如果是ref，则返回.value。但这对于ref组成的数组，仍然需要.value来访问。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>if (isRef(res)) {
+      // ref unwrapping - does not apply for Array + integer key.
+      const shouldUnwrap = !targetIsArray || !isIntegerKey(key)
+      return shouldUnwrap ? res.value : res
+    }
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><p>通常使用ref()函数时，我们是为了引用原始数据类型，但引用非基本类型也是可以，比如：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>const refObj=ref({foo:1})
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>refObj.value是一个对象，这对象是响应式的，修改refObj.value.foo会触发响应。而shallowRef是浅代理，只代理ref对象本身，也就是.value是被代理的，而.value所引用的对象并没有被代理，修改refObj.value.foo不会触发响应。那如果也要触发响应呢？Vue3提供triggerRef函数，可以让我们强制触发响应。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>triggerRef(refObj) 
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h3 id="vue3-diff"><a href="#vue3-diff" class="header-anchor">#</a> Vue3 Diff</h3> <img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/c162ab65538f4e9592e78a3bcaa7cbd4~tplv-k3u1fbpfcp-zoom-1.image" alt="image-20210618092346176" style="zoom:200%;"> <p><strong>大体流程：</strong></p> <ol><li><p>从头对比找到有相同的节点 patch ，发现不同，立即跳出。</p></li> <li><p>如果第一步没有patch完，立即，从后往前开始patch ,如果发现不同立即跳出循环。</p></li> <li><p>如果新的节点大于老的节点数 ，对于剩下的节点全部以新的vnode处理（ 这种情况说明已经patch完相同的vnode ）。</p></li> <li><p>对于老的节点大于新的节点的情况 ， 对于超出的节点全部卸载 （ 这种情况说明已经patch完相同的vnode ）。</p></li> <li><p>不确定的元素（ 这种情况说明没有patch完相同的vnode ） 与 3 ，4对立关系。如下情况：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>     // [i ... e1 + 1]: a b [c d e] f g
+
+     // [i ... e2 + 1]: a b [e d c h] f g
+
+     // i = 2, e1 = 4, e2 = 5
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div></li></ol> <ul><li><p>把没有比较过的新的vnode节点,通过map保存，记录已经patch的新节点的数量 patched，没有经过 path 新的节点的数量 toBePatched</p></li> <li><p>建立一个数组newIndexToOldIndexMap，每个子元素都是[ 0, 0, 0, 0, 0, 0, ] 里面的数字记录老节点的索引 ，数组索引就是新节点的索引</p></li> <li><p>遍历老节点：</p> <ul><li>如果 toBePatched新的节点数量为0 ，那么统一卸载老的节点</li> <li>如果,老节点的key存在 ，通过key找到对应的index</li> <li>如果,老节点的key不存在：遍历剩下的所有新节点，如果找到与当前老节点对应的新节点那么 ，将新节点的索引，赋值给newIndex</li> <li>没有找到与老节点对应的新节点，卸载当前老节点</li> <li>如果找到与老节点对应的新节点，把老节点的索引，记录在存放新节点的数组中</li></ul></li> <li><p>如果发生移动：</p></li></ul> <ol><li>根据 newIndexToOldIndexMap 新老节点索引列表找到最长稳定序列</li> <li>对于 newIndexToOldIndexMap[i] =0 证明不存在老节点 ，从新形成新的vnode</li> <li>对移动的节点进行移动处理。</li></ol> <h4 id="diff算法对比"><a href="#diff算法对比" class="header-anchor">#</a> Diff算法对比：</h4> <ul><li>React：遍历新节点序列在旧节点序列出现的位置，如果位置递增，则新节点不需要移动，否则节点后移。</li> <li>Vue 2：双端比较。分别用新、旧节点序列的start跟end相互比较，查找复用，直到指针重合，退出循环。若四次对比都没找到复用节点，只能拿新序列的节点去旧序列依次对比。</li> <li>Vue 3：<strong>最长递增子序列</strong>。生成List代表新节点序列不需要移动的index数组，从后向前遍历，若List[j]==index 说明节点不需要移动，否则节点插入队尾。</li></ul></div></section> <footer class="page-edit"><!----> <!----></footer> <!----> <div class="comments-wrapper"><!----></div> <ul class="side-bar sub-sidebar-wrapper" style="width:0;" data-v-1ab38110></ul></main> <!----></div></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-c6073ba8 data-v-c6073ba8><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-c6073ba8><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-c6073ba8></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-c6073ba8></path></svg></div></div></div>
+    <script src="/blogs/assets/js/app.cb40e71a.js" defer></script><script src="/blogs/assets/js/4.9b4fbbfa.js" defer></script><script src="/blogs/assets/js/1.816ee287.js" defer></script><script src="/blogs/assets/js/23.d0aeee6c.js" defer></script>
+  </body>
+</html>

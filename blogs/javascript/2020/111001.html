@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>你不知道的JavaScript《四》事件轮询 | Chuck&#39;s Blog</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link rel="icon" href="/blogs/favicon.ico">
+    <meta name="description" content="总要写点东西记录吧">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    
+    <link rel="preload" href="/blogs/assets/css/0.styles.46000bed.css" as="style"><link rel="preload" href="/blogs/assets/js/app.cb40e71a.js" as="script"><link rel="preload" href="/blogs/assets/js/4.9b4fbbfa.js" as="script"><link rel="preload" href="/blogs/assets/js/1.816ee287.js" as="script"><link rel="preload" href="/blogs/assets/js/18.3e446ca7.js" as="script"><link rel="prefetch" href="/blogs/assets/js/10.0f83a5e5.js"><link rel="prefetch" href="/blogs/assets/js/11.7a39697c.js"><link rel="prefetch" href="/blogs/assets/js/12.ab9d2642.js"><link rel="prefetch" href="/blogs/assets/js/13.30ec30d2.js"><link rel="prefetch" href="/blogs/assets/js/14.a82441b4.js"><link rel="prefetch" href="/blogs/assets/js/15.d4da47f3.js"><link rel="prefetch" href="/blogs/assets/js/16.7b406f66.js"><link rel="prefetch" href="/blogs/assets/js/17.2dab3107.js"><link rel="prefetch" href="/blogs/assets/js/19.b97b5fff.js"><link rel="prefetch" href="/blogs/assets/js/2.06ddb29d.js"><link rel="prefetch" href="/blogs/assets/js/20.4ef640c6.js"><link rel="prefetch" href="/blogs/assets/js/21.0cebf56d.js"><link rel="prefetch" href="/blogs/assets/js/22.c182a988.js"><link rel="prefetch" href="/blogs/assets/js/23.d0aeee6c.js"><link rel="prefetch" href="/blogs/assets/js/24.85877836.js"><link rel="prefetch" href="/blogs/assets/js/25.752f6807.js"><link rel="prefetch" href="/blogs/assets/js/26.50ddaf0d.js"><link rel="prefetch" href="/blogs/assets/js/27.2f3dca62.js"><link rel="prefetch" href="/blogs/assets/js/28.02662c80.js"><link rel="prefetch" href="/blogs/assets/js/29.d48ddfe3.js"><link rel="prefetch" href="/blogs/assets/js/5.d7767221.js"><link rel="prefetch" href="/blogs/assets/js/6.d8c29f1f.js"><link rel="prefetch" href="/blogs/assets/js/7.6b644db6.js"><link rel="prefetch" href="/blogs/assets/js/8.7ca1b1dd.js"><link rel="prefetch" href="/blogs/assets/js/9.ae0fe994.js">
+    <link rel="stylesheet" href="/blogs/assets/css/0.styles.46000bed.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar" data-v-edf8551e><div data-v-edf8551e><div id="loader-wrapper" class="loading-wrapper" data-v-d48f4d20 data-v-edf8551e data-v-edf8551e><div class="loader-main" data-v-d48f4d20><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div></div> <!----> <!----></div> <div class="password-shadow password-wrapper-out" style="display:none;" data-v-24de1186 data-v-edf8551e data-v-edf8551e><h3 class="title" data-v-24de1186 data-v-24de1186>Chuck's Blog</h3> <p class="description" data-v-24de1186 data-v-24de1186>总要写点东西记录吧</p> <label id="box" class="inputBox" data-v-24de1186 data-v-24de1186><input type="password" value="" data-v-24de1186> <span data-v-24de1186>Konck! Knock!</span> <button data-v-24de1186>OK</button></label> <div class="footer" data-v-24de1186 data-v-24de1186><span data-v-24de1186><i class="iconfont reco-theme" data-v-24de1186></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-24de1186>vuePress-theme-reco</a></span> <span data-v-24de1186><i class="iconfont reco-copyright" data-v-24de1186></i> <a data-v-24de1186><span data-v-24de1186>Chuck</span>
+            
+          <span data-v-24de1186>2021 - </span>
+          2022
+        </a></span></div></div> <div class="hide" data-v-edf8551e><header class="navbar" data-v-edf8551e><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/blogs/" class="home-link router-link-active"><img src="/blogs/favicon.ico" alt="Chuck's Blog" class="logo"> <span class="site-name">Chuck's Blog</span></a> <div class="links"><div class="color-picker"><a class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="mode-options"><h4 class="title">Choose mode</h4> <ul class="color-mode-options"><li class="dark">dark</li><li class="auto active">auto</li><li class="light">light</li></ul></div></div></div> <div class="search-box"><i class="iconfont reco-search"></i> <input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/blogs/" class="nav-link"><i class="iconfont reco-home"></i>
+  Home
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blogs/categories/CSS/" class="nav-link"><i class="undefined"></i>
+  CSS
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/categories/JavaScript/" class="nav-link"><i class="undefined"></i>
+  JavaScript
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/categories/Node/" class="nav-link"><i class="undefined"></i>
+  Node
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/categories/Vue/" class="nav-link"><i class="undefined"></i>
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/categories/浏览器相关/" class="nav-link"><i class="undefined"></i>
+  浏览器相关
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/categories/网络/" class="nav-link"><i class="undefined"></i>
+  网络
+</a></li></ul></div></div><div class="nav-item"><a href="/blogs/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div><div class="nav-item"><a href="/blogs/timeline/" class="nav-link"><i class="iconfont reco-date"></i>
+  归档
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-message"></i>
+      相关链接
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/Hjw52" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont reco-github"></i>
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://juejin.cn/user/1125491941583640/posts" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont reco-juejin"></i>
+  掘金
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask" data-v-edf8551e></div> <aside class="sidebar" data-v-edf8551e><div class="personal-info-wrapper" data-v-29bd5bbe data-v-edf8551e><img src="/blogs/avatar.jpg" alt="author-avatar" class="personal-img" data-v-29bd5bbe> <h3 class="name" data-v-29bd5bbe>
+    Chuck
+  </h3> <div class="num" data-v-29bd5bbe><div data-v-29bd5bbe><h3 data-v-29bd5bbe>18</h3> <h6 data-v-29bd5bbe>Articles</h6></div> <div data-v-29bd5bbe><h3 data-v-29bd5bbe>9</h3> <h6 data-v-29bd5bbe>Tags</h6></div></div> <ul class="social-links" data-v-29bd5bbe></ul> <hr data-v-29bd5bbe></div> <nav class="nav-links"><div class="nav-item"><a href="/blogs/" class="nav-link"><i class="iconfont reco-home"></i>
+  Home
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blogs/categories/CSS/" class="nav-link"><i class="undefined"></i>
+  CSS
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/categories/JavaScript/" class="nav-link"><i class="undefined"></i>
+  JavaScript
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/categories/Node/" class="nav-link"><i class="undefined"></i>
+  Node
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/categories/Vue/" class="nav-link"><i class="undefined"></i>
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/categories/浏览器相关/" class="nav-link"><i class="undefined"></i>
+  浏览器相关
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/categories/网络/" class="nav-link"><i class="undefined"></i>
+  网络
+</a></li></ul></div></div><div class="nav-item"><a href="/blogs/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div><div class="nav-item"><a href="/blogs/timeline/" class="nav-link"><i class="iconfont reco-date"></i>
+  归档
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-message"></i>
+      相关链接
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/Hjw52" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont reco-github"></i>
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://juejin.cn/user/1125491941583640/posts" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont reco-juejin"></i>
+  掘金
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav> <!----> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-24de1186 data-v-edf8551e><h3 class="title" data-v-24de1186 data-v-24de1186>你不知道的JavaScript《四》事件轮询</h3> <!----> <label id="box" class="inputBox" data-v-24de1186 data-v-24de1186><input type="password" value="" data-v-24de1186> <span data-v-24de1186>Konck! Knock!</span> <button data-v-24de1186>OK</button></label> <div class="footer" data-v-24de1186 data-v-24de1186><span data-v-24de1186><i class="iconfont reco-theme" data-v-24de1186></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-24de1186>vuePress-theme-reco</a></span> <span data-v-24de1186><i class="iconfont reco-copyright" data-v-24de1186></i> <a data-v-24de1186><span data-v-24de1186>Chuck</span>
+            
+          <span data-v-24de1186>2021 - </span>
+          2022
+        </a></span></div></div> <div data-v-edf8551e><main class="page" style="padding-right:0;"><section><div class="page-title"><h1 class="title">你不知道的JavaScript《四》事件轮询</h1> <div data-v-6b827e97><i class="iconfont reco-account" data-v-6b827e97><span data-v-6b827e97>Chuck</span></i> <i class="iconfont reco-date" data-v-6b827e97><span data-v-6b827e97>11/10/2020</span></i> <!----> <i class="tags iconfont reco-tag" data-v-6b827e97><span class="tag-item" data-v-6b827e97>JavaScript</span></i></div></div> <div class="theme-reco-content content__default"><h3 id="一、单线程"><a href="#一、单线程" class="header-anchor">#</a> 一、单线程</h3> <p><strong>JavaScript代码运行在单线程</strong></p> <p>单线程特点就是同一时间只做一件事，避免了多线程的锁机制和数据同步问题。JavaScript虽然没有多线程，但也提供的webworker子线程，用于一些辅助计算（不得操作DOM）。MDN关于<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Web_Workers_API/Using_web_workers" target="_blank" rel="noopener noreferrer">webworker<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>的解释，大体是将JS代码运行在另一个全局上下文。</p> <h3 id="二、任务队列"><a href="#二、任务队列" class="header-anchor">#</a> 二、任务队列</h3> <p>单线程意味着阻塞，很多时候CPU空闲，而IO操作却耗时造成了阻塞。但JavaScript异步任务可以让主线程暂时忽略阻塞IO的操作，挂起等待的任务先执行后面的操作，等I/O返回结果后，再回过头执行。异步对习惯编写同步代码的人来讲，或许有点“奇葩”。任务可以分成两种，一种是同步任务（synchronous），另一种是异步任务（asynchronous）。同步任务指的是，在主线程上排队执行的任务，只有前一个任务执行完毕，才能执行后一个任务；异步任务指的是，不进入主线程、而进入&quot;任务队列&quot;（task queue）的任务，只有&quot;任务队列&quot;通知主线程，某个异步任务可以执行了，该任务才会进入主线程执行。</p> <p><img src="https://github.com/Hjw52/Blog/blob/master/image/733258-20200710170606245-1301109876.png?raw=true" alt=""></p> <p><strong>执行机制：</strong></p> <ol><li>有同步任务都在主线程上执行，形成一个执行栈。</li> <li>主线程之外，还存在一个&quot;任务队列&quot;（task queue）。只要异步任务有了运行结果，就在&quot;任务队列&quot;之中放置一个事件。</li> <li>一旦&quot;执行栈&quot;中的所有同步任务执行完毕，系统就会读取&quot;任务队列&quot;，看看里面有哪些事件。那些对应的异步任务，于是结束等待状态，进入执行栈，开始执行。</li> <li>主线程不断重复上面的第三步。</li></ol> <p>看下这段代码：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>console.log(1);
+setTimeout(function(){
+    console.log(2);
+    process.nextTick(function(){
+        console.log(3);
+    })
+},0)
+console.log(4);
+process.nextTick(function(){
+    console.log(5)
+})
+// 1 4 5 2 3
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div><ol><li>一开始JavaScript代码进入主线程，console.log同步任务，输出1。</li> <li>往下运行遇到setTimeOut，这边属于异步任务，在任务队列注册定时器事件后继续向下执行，事件将在“0秒”后运行。（异步任务只有同步任务先执行完（主线程空闲）才会去执行，这边setTimeOut（fn,0) 在Node环境被编译成这边setTimeOut（fn,1)，而在浏览器最低是4毫秒，所以加上主线程的一些延迟，0毫秒是达不到的，只能是尽快执行。）</li> <li>setTimeOut往下遇到console.log 输出4。</li> <li>遇到process.nextTick，异步任务，它表示当前执行栈为空时执行，即下一次事件轮询前执行，所以它比setTimeout先执行。</li> <li>主线程执行完，到任务队列拿出定时器事件执行，依次输出 2 3。</li> <li>所以综上输出顺序：1 4 5 2 3</li></ol> <p>也许你会有所疑惑，上面同步和异步代码的划分和优先级，实际JavaScript运行机制事件轮询其实更准确的划分为宏任务和微任务：</p> <ul><li>**宏任务：**整体的script代码、setTimeout、setInterval、new promise函数内容、setImmediate（Node）</li> <li>**微任务：**promise.then、process.nextTic、MutaionObserver</li></ul> <p>所以上面的图更准确的为：</p> <p><img src="https://github.com/Hjw52/Blog/blob/master/image/1.png?raw=true" alt=""></p> <p><strong>执行机制：</strong></p> <ol><li>JavaScript引擎的事件轮询首先进入整体代码（宏任务），从上到下执行，遇到宏任务则加入宏任务队列，遇到微任务则加入微任务队列，每次宏任务执行完都会执行清空微任务队列。</li> <li>拿出下一个宏任务执行，以此循环。</li> <li>大致为：宏任务=&gt;微任务=&gt;宏任务=&gt;微任务  ....不断循环。</li></ol> <p>让我们再看看这段代码：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>setTimeout(function() {
+    console.log('setTimeout');
+})
+
+new Promise(function(resolve) {
+    console.log('promise');
+}).then(function() {
+    console.log('then');
+})
+
+console.log('console');
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><ol><li>首先script代码为宏任务，进入主线程。</li> <li>遇到setTimeout，注册回调，下一次宏任务执行</li> <li>接下来遇到new Promise 函数内代码立即执行，then函数加入微任务队列</li> <li>遇到console.log立即执行，第一个宏任务结束</li> <li>拿出微任务队列的then 函数执行，输出then</li> <li>微任务执行完成进入下一次宏任务。</li></ol> <h4 id="node的事件轮询"><a href="#node的事件轮询" class="header-anchor">#</a> Node的事件轮询</h4> <p>node由于是运行在服务端的js，它的环境与浏览器并不完全相同，所以它的事件轮询也不相同。它是分阶段的：</p> <ol><li>timers: 执行<code>setTimeout</code>和<code>setInterval</code>的回调</li> <li>pending callbacks: 执行延迟到下一个循环迭代的 I/O 回调</li> <li>idle, prepare: 仅系统内部使用（process.NextTick在这检查）</li> <li>poll: 检索新的 I/O 事件;执行与 I/O 相关的回调。事实上除了其他几个阶段处理的事情，其他几乎所有的异步都在这个阶段处理。</li> <li>check: <code>setImmediate</code>在这里执行</li> <li>close callbacks: 一些关闭的回调函数，如：<code>socket.on('close', ...)</code></li></ol> <p>关于<strong>Process.nextTick 和 setImmediate</strong>，在两者同级的情况下，nextTick优先级高于 setImmediate。下图形象地说明两者的关系：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>A();
+B();
+C();
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p><img src="https://pic1.zhimg.com/ba47432176970aeb9e9df4c3cbb3a623_r.jpg?source=1940ef5c" alt="preview"></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>A();
+process.nextTick(B);
+C();
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p><img src="https://pic4.zhimg.com/80/3a591f00cfe6b3c3b51137c2a8bda382_720w.jpg?source=1940ef5c" alt="img"></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>A();
+setImmediate(B);
+C();
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p><img src="https://pic4.zhimg.com/2d5e6e9335f8972b0d5a6e010871d828_r.jpg?source=1940ef5c" alt="preview"></p> <p>绿色可理解为宏任务队列，黄色可理解为微任务队列。process.nextTick指定的回调函数是在本次&quot;事件循环&quot;触发，而setImmediate指定的是在下次&quot;事件循环&quot;触发，所以很显然，前者总是比后者发生得早，而且执行效率也高（因为不用检查&quot;任务队列&quot;）</p> <h3 id="定时器"><a href="#定时器" class="header-anchor">#</a> 定时器</h3> <p>常见的定时器有以下三种：</p> <ul><li>setTimeOut，执行一次 。</li> <li>setinterval，重复执行 。</li> <li>setImmediate（Node环境）尽早执行，类似setTimeOut（fn,0）时间或长或短。</li></ul> <p>定时器只保证事件在任务队列里注册，并不能保证事件能按时执行。实际上时间到期后，异步任务返回值加到任务队列还需要等待主线程的空闲才能被执行。如果前面宏任务耗时太长，那也只能等待，造成延迟远远大于预定值。</p> <h4 id="settimeout-fn-0-与setimmediate谁快"><a href="#settimeout-fn-0-与setimmediate谁快" class="header-anchor">#</a> setTimeout（fn,0）与setImmediate谁快？</h4> <div class="language- line-numbers-mode"><pre class="language-text"><code>// Node环境
+console.log('test');
+
+setTimeout(() =&gt; {
+  console.log('setTimeout');
+}, 0);
+
+setImmediate(() =&gt; {
+  console.log('setImmediate');
+});
+// setTimeout可能比setImmediate早，也可能晚输出
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><p><strong>原因：</strong></p> <ol><li>外层同步代码一次性全部执行完，遇到异步API就塞到对应的阶段</li> <li>遇到<code>setTimeout</code>，虽然设置的是0毫秒触发，但是被node.js强制改为1毫秒，塞入<code>times</code>阶段</li> <li>遇到<code>setImmediate</code>塞入<code>check</code>阶段</li> <li>同步代码执行完毕，进入Event Loop</li> <li>先进入<code>times</code>阶段，检查当前时间过去了1毫秒没有，如果过了1毫秒，满足<code>setTimeout</code>条件，执行回调，如果没过1毫秒，跳过</li> <li>跳过空的阶段，进入check阶段，执行<code>setImmediate</code>回调</li></ol> <h4 id=""><a href="#" class="header-anchor">#</a></h4></div></section> <footer class="page-edit"><!----> <!----></footer> <!----> <div class="comments-wrapper"><!----></div> <ul class="side-bar sub-sidebar-wrapper" style="width:0;" data-v-1ab38110></ul></main> <!----></div></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-c6073ba8 data-v-c6073ba8><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-c6073ba8><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-c6073ba8></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-c6073ba8></path></svg></div></div></div>
+    <script src="/blogs/assets/js/app.cb40e71a.js" defer></script><script src="/blogs/assets/js/4.9b4fbbfa.js" defer></script><script src="/blogs/assets/js/1.816ee287.js" defer></script><script src="/blogs/assets/js/18.3e446ca7.js" defer></script>
+  </body>
+</html>

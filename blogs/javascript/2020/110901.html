@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>你不知道的JavaScript《三》对象与原型链 | Chuck&#39;s Blog</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link rel="icon" href="/blogs/favicon.ico">
+    <meta name="description" content="总要写点东西记录吧">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    
+    <link rel="preload" href="/blogs/assets/css/0.styles.46000bed.css" as="style"><link rel="preload" href="/blogs/assets/js/app.cb40e71a.js" as="script"><link rel="preload" href="/blogs/assets/js/4.9b4fbbfa.js" as="script"><link rel="preload" href="/blogs/assets/js/1.816ee287.js" as="script"><link rel="preload" href="/blogs/assets/js/17.2dab3107.js" as="script"><link rel="prefetch" href="/blogs/assets/js/10.0f83a5e5.js"><link rel="prefetch" href="/blogs/assets/js/11.7a39697c.js"><link rel="prefetch" href="/blogs/assets/js/12.ab9d2642.js"><link rel="prefetch" href="/blogs/assets/js/13.30ec30d2.js"><link rel="prefetch" href="/blogs/assets/js/14.a82441b4.js"><link rel="prefetch" href="/blogs/assets/js/15.d4da47f3.js"><link rel="prefetch" href="/blogs/assets/js/16.7b406f66.js"><link rel="prefetch" href="/blogs/assets/js/18.3e446ca7.js"><link rel="prefetch" href="/blogs/assets/js/19.b97b5fff.js"><link rel="prefetch" href="/blogs/assets/js/2.06ddb29d.js"><link rel="prefetch" href="/blogs/assets/js/20.4ef640c6.js"><link rel="prefetch" href="/blogs/assets/js/21.0cebf56d.js"><link rel="prefetch" href="/blogs/assets/js/22.c182a988.js"><link rel="prefetch" href="/blogs/assets/js/23.d0aeee6c.js"><link rel="prefetch" href="/blogs/assets/js/24.85877836.js"><link rel="prefetch" href="/blogs/assets/js/25.752f6807.js"><link rel="prefetch" href="/blogs/assets/js/26.50ddaf0d.js"><link rel="prefetch" href="/blogs/assets/js/27.2f3dca62.js"><link rel="prefetch" href="/blogs/assets/js/28.02662c80.js"><link rel="prefetch" href="/blogs/assets/js/29.d48ddfe3.js"><link rel="prefetch" href="/blogs/assets/js/5.d7767221.js"><link rel="prefetch" href="/blogs/assets/js/6.d8c29f1f.js"><link rel="prefetch" href="/blogs/assets/js/7.6b644db6.js"><link rel="prefetch" href="/blogs/assets/js/8.7ca1b1dd.js"><link rel="prefetch" href="/blogs/assets/js/9.ae0fe994.js">
+    <link rel="stylesheet" href="/blogs/assets/css/0.styles.46000bed.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar" data-v-edf8551e><div data-v-edf8551e><div id="loader-wrapper" class="loading-wrapper" data-v-d48f4d20 data-v-edf8551e data-v-edf8551e><div class="loader-main" data-v-d48f4d20><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div></div> <!----> <!----></div> <div class="password-shadow password-wrapper-out" style="display:none;" data-v-24de1186 data-v-edf8551e data-v-edf8551e><h3 class="title" data-v-24de1186 data-v-24de1186>Chuck's Blog</h3> <p class="description" data-v-24de1186 data-v-24de1186>总要写点东西记录吧</p> <label id="box" class="inputBox" data-v-24de1186 data-v-24de1186><input type="password" value="" data-v-24de1186> <span data-v-24de1186>Konck! Knock!</span> <button data-v-24de1186>OK</button></label> <div class="footer" data-v-24de1186 data-v-24de1186><span data-v-24de1186><i class="iconfont reco-theme" data-v-24de1186></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-24de1186>vuePress-theme-reco</a></span> <span data-v-24de1186><i class="iconfont reco-copyright" data-v-24de1186></i> <a data-v-24de1186><span data-v-24de1186>Chuck</span>
+            
+          <span data-v-24de1186>2021 - </span>
+          2022
+        </a></span></div></div> <div class="hide" data-v-edf8551e><header class="navbar" data-v-edf8551e><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/blogs/" class="home-link router-link-active"><img src="/blogs/favicon.ico" alt="Chuck's Blog" class="logo"> <span class="site-name">Chuck's Blog</span></a> <div class="links"><div class="color-picker"><a class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="mode-options"><h4 class="title">Choose mode</h4> <ul class="color-mode-options"><li class="dark">dark</li><li class="auto active">auto</li><li class="light">light</li></ul></div></div></div> <div class="search-box"><i class="iconfont reco-search"></i> <input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/blogs/" class="nav-link"><i class="iconfont reco-home"></i>
+  Home
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blogs/categories/CSS/" class="nav-link"><i class="undefined"></i>
+  CSS
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/categories/JavaScript/" class="nav-link"><i class="undefined"></i>
+  JavaScript
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/categories/Node/" class="nav-link"><i class="undefined"></i>
+  Node
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/categories/Vue/" class="nav-link"><i class="undefined"></i>
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/categories/浏览器相关/" class="nav-link"><i class="undefined"></i>
+  浏览器相关
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/categories/网络/" class="nav-link"><i class="undefined"></i>
+  网络
+</a></li></ul></div></div><div class="nav-item"><a href="/blogs/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div><div class="nav-item"><a href="/blogs/timeline/" class="nav-link"><i class="iconfont reco-date"></i>
+  归档
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-message"></i>
+      相关链接
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/Hjw52" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont reco-github"></i>
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://juejin.cn/user/1125491941583640/posts" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont reco-juejin"></i>
+  掘金
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask" data-v-edf8551e></div> <aside class="sidebar" data-v-edf8551e><div class="personal-info-wrapper" data-v-29bd5bbe data-v-edf8551e><img src="/blogs/avatar.jpg" alt="author-avatar" class="personal-img" data-v-29bd5bbe> <h3 class="name" data-v-29bd5bbe>
+    Chuck
+  </h3> <div class="num" data-v-29bd5bbe><div data-v-29bd5bbe><h3 data-v-29bd5bbe>18</h3> <h6 data-v-29bd5bbe>Articles</h6></div> <div data-v-29bd5bbe><h3 data-v-29bd5bbe>9</h3> <h6 data-v-29bd5bbe>Tags</h6></div></div> <ul class="social-links" data-v-29bd5bbe></ul> <hr data-v-29bd5bbe></div> <nav class="nav-links"><div class="nav-item"><a href="/blogs/" class="nav-link"><i class="iconfont reco-home"></i>
+  Home
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blogs/categories/CSS/" class="nav-link"><i class="undefined"></i>
+  CSS
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/categories/JavaScript/" class="nav-link"><i class="undefined"></i>
+  JavaScript
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/categories/Node/" class="nav-link"><i class="undefined"></i>
+  Node
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/categories/Vue/" class="nav-link"><i class="undefined"></i>
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/categories/浏览器相关/" class="nav-link"><i class="undefined"></i>
+  浏览器相关
+</a></li><li class="dropdown-item"><!----> <a href="/blogs/categories/网络/" class="nav-link"><i class="undefined"></i>
+  网络
+</a></li></ul></div></div><div class="nav-item"><a href="/blogs/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div><div class="nav-item"><a href="/blogs/timeline/" class="nav-link"><i class="iconfont reco-date"></i>
+  归档
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-message"></i>
+      相关链接
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/Hjw52" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont reco-github"></i>
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://juejin.cn/user/1125491941583640/posts" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont reco-juejin"></i>
+  掘金
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav> <!----> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-24de1186 data-v-edf8551e><h3 class="title" data-v-24de1186 data-v-24de1186>你不知道的JavaScript《三》对象与原型链</h3> <!----> <label id="box" class="inputBox" data-v-24de1186 data-v-24de1186><input type="password" value="" data-v-24de1186> <span data-v-24de1186>Konck! Knock!</span> <button data-v-24de1186>OK</button></label> <div class="footer" data-v-24de1186 data-v-24de1186><span data-v-24de1186><i class="iconfont reco-theme" data-v-24de1186></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-24de1186>vuePress-theme-reco</a></span> <span data-v-24de1186><i class="iconfont reco-copyright" data-v-24de1186></i> <a data-v-24de1186><span data-v-24de1186>Chuck</span>
+            
+          <span data-v-24de1186>2021 - </span>
+          2022
+        </a></span></div></div> <div data-v-edf8551e><main class="page" style="padding-right:0;"><section><div class="page-title"><h1 class="title">你不知道的JavaScript《三》对象与原型链</h1> <div data-v-6b827e97><i class="iconfont reco-account" data-v-6b827e97><span data-v-6b827e97>Chuck</span></i> <i class="iconfont reco-date" data-v-6b827e97><span data-v-6b827e97>11/9/2020</span></i> <!----> <i class="tags iconfont reco-tag" data-v-6b827e97><span class="tag-item" data-v-6b827e97>JavaScript</span></i></div></div> <div class="theme-reco-content content__default"><h3 id="类型"><a href="#类型" class="header-anchor">#</a> 类型</h3> <p>在了解对象之前，先了解下JavaScript的类型，在JavaScript中一共有6种主要语言类型：</p> <ul><li>string</li> <li>number</li> <li>boolean</li> <li>null</li> <li>undefined</li> <li>object</li></ul> <p>其中前面5种为基本类型，object为复杂类型。ES6又新增了一种语言类型Symbol，表示唯一。正常使用typeof可以输出变量的类型，但JavaScript存在一个bug，对null 进行typeof 会返回 object，然而null却不属于对象。（<strong>原理：<strong>不同的</strong>对象底层都表示为二进制，在JavaScript二进制前三位为0的话被判定为object类型</strong>，而null的二进制全是0，所以被当成对象）</p> <h3 id="内置对象"><a href="#内置对象" class="header-anchor">#</a> 内置对象</h3> <p>JavaScript中一些对象的子类型称为内置对象，内置对象从表现形式来讲很像其他语言的类型或类：</p> <ul><li>String</li> <li>Number</li> <li>Boolean</li> <li>Object</li> <li>Function</li> <li>Array</li> <li>Date</li> <li>RegExp</li> <li>Error</li></ul> <p>这些函数通常当做构造函数被new调用，返回新对象。当调用内置对象的一些属性或方法时，通常需要对字面量进行“装箱”和“拆箱”的操作。比如String的length属性和字符串相关方法，都属于内置对象而不是字符串字面量。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>var strObject = new String( &quot;I am a string&quot; );
+typeof strObject; // &quot;object&quot; 返回对象
+strObject instanceof String; // true String实例
+
+// 自动装箱 length属性 方法只有在String上有
+// strPrimitive属于字面量
+
+var strPrimitive = &quot;I am a string&quot;;
+console.log( strPrimitive.length ); // 13
+console.log( strPrimitive.charAt( 3 ) ); // &quot;m&quot;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><h3 id="属性描述符"><a href="#属性描述符" class="header-anchor">#</a> 属性描述符</h3> <p>从ES5开始，对象的属性都具备了属性描述符。一个对象的属性通常可以包含value、writable（可写）、enumerable（可枚举）、configurable（可配置）的描述。</p> <ol><li>**Writable：**决定是否可以修改属性的值</li></ol> <div class="language- line-numbers-mode"><pre class="language-text"><code>var myObject = {};
+Object.defineProperty( myObject, &quot;a&quot;, {
+value: 2,
+writable: false, // 不可写、相当于空set
+configurable: true,
+enumerable: true
+} );
+
+myObject.a = 3;// 严格模式下报错 TypeError
+myObject.a; //还是 2
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><p>​	**2.Configurable：**只要属性是可配置的，就可以使用 defineProperty() 方法来修改属性描述符</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>var myObject = {
+	a:2
+};
+Object.defineProperty( myObject, &quot;a&quot;, {
+	value: 4,
+	writable: true,
+	configurable: false, // 不可配置
+	enumerable: true
+} );
+//	修改属性描述符
+Object.defineProperty( myObject, &quot;a&quot;, {
+	value: 6,
+	writable: true,
+	configurable: true,
+	enumerable: true
+} ); 
+// 报错 TypeError
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br></div></div><p>把 configurable 修改成 false ，将无法修改、删除对象的属性，而且它是单向操作，无法撤销。不过它有个例外：可以修改writable的状态由true改为false,也仅此而已。</p> <p>​	<strong>3. enumerable</strong></p> <p>可枚举，顾名思义，这个描述符控制的是属性是否会出现在对象的属性枚举中，比如说 for..in 循环。如果把 enumerable 设置成 false，这个属性就不会出现在枚举中，虽然仍然可以正常访问它。相对地，设置成 true 就会让它出现在枚举中。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>var myObject = { };
+	Object.defineProperty(
+	myObject,
+	&quot;a&quot;,
+	// 让 a 像普通属性一样可以枚举
+	{ enumerable: true, value: 2 }
+);
+Object.defineProperty(
+	myObject,
+	&quot;b&quot;,
+	// 让 b 不可枚举
+	{ enumerable: false, value: 3 }
+);
+myObject.b; // 3
+(&quot;b&quot; in myObject); // true
+myObject.hasOwnProperty( &quot;b&quot; ); // true
+// .......
+for (var k in myObject) {
+	console.log( k, myObject[k] );
+}
+// &quot;a&quot;  2
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br></div></div><p>in 操作符会检查属性是否在对象及其 [[Prototype]] 原型链中。相比之下， hasOwnProperty(..) 只会检查属性是否在 myObject 对象中，不会检查原型 [[Prototype]] 链。</p> <p>​	**4.value：**对象的值，这边不多介绍。</p> <p><strong>补充：</strong></p> <ul><li>当你要定义一对象属性常量时，可以使用writable：false和configurable：false，达到不可修改、删除、重定义的效果。</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>var myObject = {};
+Object.defineProperty( myObject, &quot;CONST_NUMBER&quot;, {
+	value: 42,
+	writable: false,
+	configurable: false
+} );
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><ul><li>禁止拓展对象：object.preventExtensions（）</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>var myObject = {
+	a:2
+};
+Object.preventExtensions( myObject );
+myObject.b = 3;
+myObject.b; // undefined 严格模式下报错
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><ul><li>密封对象：object.seal(...)，这个方法相当于在一个现有对象调用object.preventExtensions（）并把所有属性标记为configurable：false。密封之后不仅不能添加新属性，也不能重新配置或者删除任何现有属性（但可以修改属性的值）</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>var myObject = {
+	a:2
+};
+Object.seal( myObject );//密封对象 还可以修改对象属性
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><ul><li>冻结对象：Object.freeze() ，它会创建一个冻结对象，这个方法实际上会在一个现有对象上调用 Object.seal() 并把所有“数据访问”属性标记为 writable:false，这样就无法修改它们的值。它是应用在对象上的级别最高的不可变性，它会禁止对于对象本身及其任意 直接属性的修改。</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>var myObject = {
+	a:2
+};
+Object.freeze( myObject );//冻结对象 无法修改对象属性
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><h3 id="原型"><a href="#原型" class="header-anchor">#</a> 原型</h3> <p>​		JavaScript 中的对象有一个特殊的 [Prototype] 内置属性，其实就是对于其他对象的引用。当试图引用对象的属性时会触发Get操作，第一步是检查对象本身是否有这个属性，如果没有就到对象的原型链上查找，直到找到或者到达原型链顶端为止。所有普通的 [Prototype] 链最终都会指向内置的 Object.prototype。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>var anotherObject = {
+	a:2
+};
+// 创建一个关联到 anotherObject 的对象
+var myObject = Object.create( anotherObject );
+myObject.a; // 2
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><p>比如上面的代码，myObject 对象的 [Prototype] 关联到了 anotherObject。显然 myObject.a 并不存在， 但是尽管如此，属性访问仍然成功地（在 anotherObject 中）找到了值 2。</p> <h3 id="构造函数"><a href="#构造函数" class="header-anchor">#</a> 构造函数</h3> <p>当我们调用构造函数创建对象时，原型自动链接到构造的类型prototype上。 如下new Foo() 时会创建 a，a 内部 的 [Prototype] 链接关联到 Foo.prototype 指向的那个对象。prototype就是原型对象。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>function Foo() {
+	// ...
+}
+var a = new Foo();
+Object.getPrototypeOf( a ) === Foo.prototype; // true
+a.constructor === Foo; // true
+a.__proto__ === Foo.prototype; // true 隐式原型等于构造函数的显示原型
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><p>Foo.prototype默认有一个公有且不可枚举的constructor属性，关联对象的构造函数，比如上面的Foo。（<strong>注意：constructor是原型上的属性，并不在对象中</strong>）当我们看到关键字new时，很容易联想到面向对象的语言构造类实例。Foo（）的调用方法也很像初始化类实例。但我们要注意JavaScript并没有类的概念，更多的是“伪类”。ES引入class，更多的也只是委托模式的语法糖。而且<strong>构造函数本身也不算真正的构造函数，只是因为函数调用前面加上new关键字后，new会劫持普通函数并用构造对象的形式调用它</strong>。比如：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>function NothingSpecial() {
+	console.log( &quot;Don't mind me!&quot; );
+}
+var a = new NothingSpecial();
+// &quot;Don't mind me!&quot;
+a; // NothingSpecial{}   a 为对象
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><h3 id="面向类"><a href="#面向类" class="header-anchor">#</a> &quot;面向类&quot;</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>function Foo(name) {
+	this.name = name;
+}
+Foo.prototype.myName = function() {
+	return this.name;
+};
+var a = new Foo( &quot;a&quot; );
+var b = new Foo( &quot;b&quot; );
+a.myName(); // &quot;a&quot;
+b.myName(); // &quot;b&quot;
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><p>上面的代码很好地模拟了JavaScript“面向对象”的写法，利用原型上的属性来创造公有，上面a、b都没有myName属性，但通过原型链上的方法输出了“自己的名字”。但是 有点缺陷new 生成的对象同时生成.prototype和.constructor的引用，容易修改引用上的内容从而影响整个原型。所以我们通常使用object.create()来创建关联原型的新对象，这也体现了两种设计模式：面向对象关联和面向原型的不同，下面我们看更直接的对比：</p> <h4 id="原型风格"><a href="#原型风格" class="header-anchor">#</a> 原型风格</h4> <div class="language- line-numbers-mode"><pre class="language-text"><code>function Foo(who) {
+	this.me = who;
+}
+Foo.prototype.identify = function() {
+	return &quot;I am &quot; + this.me;
+};
+function Bar(who) {
+	Foo.call( this, who );
+}
+Bar.prototype = Object.create( Foo.prototype );
+Bar.prototype.speak = function() {
+alert( &quot;Hello, &quot; + this.identify() + &quot;.&quot; );
+};
+var b1 = new Bar( &quot;b1&quot; );
+var b2 = new Bar( &quot;b2&quot; );
+b1.speak();
+b2.speak();
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br></div></div><p>子类 Bar 继承了父类 Foo，然后生成了 b1 和 b2 两个实例。b1 委托了 Bar.prototype，调用bar原型的speak。bar委托了 Foo.prototype 调用identify。</p> <h4 id="对象关联风格"><a href="#对象关联风格" class="header-anchor">#</a> 对象关联风格</h4> <div class="language- line-numbers-mode"><pre class="language-text"><code>Foo = {
+	init: function(who) {
+this.me = who;
+},
+identify: function() {
+	return &quot;I am &quot; + this.me;
+}
+};
+Bar = Object.create( Foo );
+Bar.speak = function() {
+	alert( &quot;Hello, &quot; + this.identify() + &quot;.&quot; );
+};
+var b1 = Object.create( Bar );
+b1.init( &quot;b1&quot; );
+var b2 = Object.create( Bar );
+b2.init( &quot;b2&quot; );
+b1.speak();
+b2.speak();
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br></div></div><p>这段代码中我们同样利用 [Prototype] 把 b1 委托给 Bar 并把 Bar 委托给 Foo，唯一不同的是不使用new 而采用object.create来构造关联。对象关联相对简洁，下面一张图描述它们之间的关系：</p> <p><strong>原型关联模型</strong></p> <p><img src="https://github.com/Hjw52/Blog/blob/master/image/image-20201110211324573.png?raw=true" alt="image-20201110211324573"></p> <p><strong>对象关联模型</strong></p> <p><img src="https://github.com/Hjw52/Blog/blob/master/image/image-20201110211547661.png?raw=true" alt="image-20201110211547661"></p> <h4 id="属性屏蔽"><a href="#属性屏蔽" class="header-anchor">#</a> 属性屏蔽</h4> <p>当给一个对象添加属性或者修改属性，因为原型链而使情况变得复杂，特别是用“=”来赋值。下面我们来讲解：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>myObject.foo = &quot;test&quot;;//为myobject 的foo属性 赋值test
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>会有以下情况：</p> <ol><li>如果 myObject 对象中包含名为 foo 的普通数据访问属性，这条赋值语句只会修改已有的属性值。</li> <li>如果 foo 不是直接存在于 myObject 中，[[Prototype]] 链就会被遍历，类似 [[Get]] 操作。 如果原型链上找不到 foo，foo 就会被直接添加到 myObject 上。</li> <li>如果属性名 foo 既出现在 myObject 中也出现在 myObject 的 [Prototype] 链上层，那 么就会发生屏蔽。myObject 中包含的 foo 属性会屏蔽原型链上层的所有 foo 属性，因为 myObject.foo 总是会选择原型链中最底层的 foo 属性。</li> <li>如果 foo 只存在于原型链上层，会有3种情况：
+<ul><li>如果在 [Prototype] 链上层存在名为 foo 的普通数据访问属性并且<strong>没有被标记为只读</strong>（writable:false），那就会直接在 myObject 中添加一个名为 foo 的新属性，它是屏蔽属性。</li> <li>如果在 [[Prototype]] 链上层存在 foo，但是它<strong>被标记为只读</strong>（writable:false），那么 无法修改已有属性或者在 myObject 上创建屏蔽属性。如果运行在严格模式下，代码会抛出一个错误。否则，这条赋值语句会被忽略。总之，不会发生屏蔽。</li> <li>如果在 [[Prototype]] 链上层存在 foo 并且它是一个 setter（设置属性的方法），那就一定会<strong>调用这个 setter</strong>。foo 不会被添加到（或者说屏蔽于）myObject，也不会重新定义 foo 这 个 setter。</li></ul></li></ol> <p>所以，我们通常使用 Object.defineProperty()来为对象添加属性，而不使用 =操作符赋值 。</p></div></section> <footer class="page-edit"><!----> <!----></footer> <!----> <div class="comments-wrapper"><!----></div> <ul class="side-bar sub-sidebar-wrapper" style="width:0;" data-v-1ab38110></ul></main> <!----></div></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-c6073ba8 data-v-c6073ba8><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-c6073ba8><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-c6073ba8></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-c6073ba8></path></svg></div></div></div>
+    <script src="/blogs/assets/js/app.cb40e71a.js" defer></script><script src="/blogs/assets/js/4.9b4fbbfa.js" defer></script><script src="/blogs/assets/js/1.816ee287.js" defer></script><script src="/blogs/assets/js/17.2dab3107.js" defer></script>
+  </body>
+</html>
